@@ -34,6 +34,7 @@ public class CristalNews extends Application {
         stage.setScene(scene);
         stage.show();
         stage.setMaximized(true);
+        stage.setTitle("CRISTAL NEWS");
         
         int i=0;
         WebView webview1 = (WebView) root.getChildrenUnmodifiable().get(0);
@@ -67,23 +68,18 @@ public class CristalNews extends Application {
             ArrayList<String> links = links_noticias();
                     int j=0;
             for (String link : links) {
-                System.out.println(link +"link" + j);
+                System.out.println(" paragrph links="+link);
                 paragrafos.add(get_paragraph(link));
                 j++;
         }
-            System.out.println("Passou-------------------------");
-            //String titulo = locator.text();
-            //String link = a_href(locator);
-            ArrayList<String> imagens = get_image("https://news.google.com/gn/news/headlines?ned=pt-pt_pt&hl=pt-pt&gl=PT");
             
-            //System.out.println(link);
-            
-           // String paragrafo = get_paragraph(link);
-           //System.out.println(paragrafo);
-        for (i = 0; i < webview.length; i++) {
-            System.out.println("tiulo:    "+titulos.get(i) + "\n Paragrafos     " + paragrafos.get(i));
+            ArrayList<String> imagens = get_image("https://news.google.pt");
+   
+        for (i = 0; i < webview.length; i++) {    
+                    
             String img_align = "\"left\"";
-            
+            System.out.println("i="+i);
+            System.out.println("paragrafo =");
             //builds the HTML containing the title and the first paragraph
             String html
                     = "<html>"
@@ -95,7 +91,7 @@ public class CristalNews extends Application {
                     + "   <body>"
                     + "      <img src=" + "\""+imagens.get(i)+"\"" + "align=" + img_align + " width=\"150\" height=\"130\" />"
                     + "      <p><b>" + titulos.get(i) + "</b><br>"
-                    + paragrafos.get(i)
+                    +          paragrafos.get(i)
                     + "      </p>"
                     + "   </body>"
                     + "</html>";
@@ -121,13 +117,12 @@ public class CristalNews extends Application {
             Elements locator = null;
             Document document = Jsoup.connect(link).get();
             //Returns the first node that as the news title
-            locator = document.select("c-wiz[class=lPV2Xe k3Pzib] img");
+            locator = document.select("div[class=xrnccd F6Welf R7GTQ keNKEd j7vNaf] img[class=tvs3Id dIH98c]");
         
             for (Element element : locator) {
                 
                 //Text of the title, present in the node
-                System.out.println("Imagem link=" + element.attr("src") );
-                
+               
                 img_links.add(element.attr("src"));
                 
             }
@@ -144,16 +139,14 @@ public class CristalNews extends Application {
         Elements locator = null;
         ArrayList<String> links= new ArrayList<>();
         try {
-            String url = "https://news.google.com/gn/news/headlines?ned=pt-pt_pt&hl=pt-pt&gl=PT";
+            String url = "https://news.google.pt";
             Document document = Jsoup.connect(url).get();
             //Returns the first node that as the news title
-            locator = document.select("c-wiz[class=M1Uqc kWyHVd] > a");
+            locator = document.select("article[class=MQsxIb xTewfe R7GTQ keNKEd j7vNaf Cc0Z5d YKEnGe EyNMab t6ttFe Fm1jeb EjqUne] a span");  //article[class=MQsxIb xTewfe R7GTQ keNKEd j7vNaf Cc0Z5d YKEnGe EyNMab t6ttFe Fm1jeb EjqUne] a span
             for (Element link : locator) {
                 links.add(link.text());
+                
             }
-            //Text of the title, present in the node
-            
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -169,13 +162,11 @@ public class CristalNews extends Application {
             String url = "https://news.google.com/gn/news/headlines?ned=pt-pt_pt&hl=pt-pt&gl=PT";
             Document document = Jsoup.connect(url).get();
             //Returns the first node that as the news title
-            locator = document.select("c-wiz[class=M1Uqc kWyHVd] > a");
+            locator = document.select("article[class=MQsxIb xTewfe R7GTQ keNKEd j7vNaf Cc0Z5d YKEnGe EyNMab t6ttFe Fm1jeb EjqUne] > a");
             for (Element link : locator) {
                 links.add(link.attr("href"));
             }
-            //Text of the title, present in the node
             
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -183,27 +174,18 @@ public class CristalNews extends Application {
         return links;
     }
     
-    
-    private String a_href(Element loc){//loc must be a tag
-        //gets the link of the title, representing the news link
-        String url = loc.attr("href");
-       
-        return url;
-    }
-    
+ 
     private String get_paragraph(String url){
         String p = "";
         Document doc;
         int i=0;
         try{
             //connects to the second link
-            doc = Jsoup.connect(url).get();
+            doc = Jsoup.connect("https://news.google.com/"+url.substring(1)).get();
             Elements paragrafos= doc.select("p");
             StringBuilder sb= new StringBuilder();
             for (Element paragrafo : paragrafos) {
                 String t= paragrafo.text().trim();
-                System.out.println("tamanho======" + t.length());
-                
                 if(t.length()==0){
                     continue;
                 } 
@@ -214,7 +196,6 @@ public class CristalNews extends Application {
                         break;
                 }
             }
-            
             return sb.toString();
         } catch(IOException e){
             e.printStackTrace();
