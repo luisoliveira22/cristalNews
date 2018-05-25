@@ -66,11 +66,10 @@ public class CristalNews extends Application {
             ArrayList<String> paragrafos = new ArrayList<>();
             //Array com links para as paginas das noticias
             ArrayList<String> links = links_noticias();
-                    int j=0;
+            
+            
             for (String link : links) {
-                System.out.println(" paragrph links="+link);
                 paragrafos.add(get_paragraph(link));
-                j++;
         }
             
             ArrayList<String> imagens = get_image("https://news.google.pt");
@@ -78,8 +77,7 @@ public class CristalNews extends Application {
         for (i = 0; i < webview.length; i++) {    
                     
             String img_align = "\"left\"";
-            System.out.println("i="+i);
-            System.out.println("paragrafo =");
+            System.out.println("paragrafo ="+ paragrafos.get(i));
             //builds the HTML containing the title and the first paragraph
             String html
                     = "<html>"
@@ -180,8 +178,9 @@ public class CristalNews extends Application {
         Document doc;
         int i=0;
         try{
+            System.out.println("URLS  ---- "+"https://news.google.com"+url.substring(1));
             //connects to the second link
-            doc = Jsoup.connect("https://news.google.com/"+url.substring(1)).get();
+            doc = Jsoup.connect("https://news.google.com"+url.substring(1)).get();
             Elements paragrafos= doc.select("p");
             StringBuilder sb= new StringBuilder();
             for (Element paragrafo : paragrafos) {
