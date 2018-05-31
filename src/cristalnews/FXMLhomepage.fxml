@@ -1,34 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.web.WebView?>
 
-<GridPane fx:id="grid" gridLinesVisible="true" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cristalnews.FXMLhomepageController">
-   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-   </rowConstraints>
-   <children>
-      <WebView fx:id="webview1" prefHeight="200.0" prefWidth="200.0" />
-      <WebView fx:id="webview2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-      <WebView fx:id="webview3" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
-      <WebView fx:id="webview4" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
-      <WebView fx:id="webview5" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <WebView fx:id="webview6" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <WebView fx:id="webview7" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
-      <WebView fx:id="webview8" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <WebView fx:id="webview9" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <WebView fx:id="webview10" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
-      <WebView fx:id="webview11" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <WebView fx:id="webview12" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-   </children>
-</GridPane>
+
+<TabPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cristalnews.FXMLhomepageController">
+   <tabs>
+      <Tab text="Atualidade">
+         <content>
+            <GridPane fx:id="root" gridLinesVisible="true">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <WebView fx:id="webview1" prefHeight="200.0" prefWidth="200.0" />
+                  <WebView fx:id="webview2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                  <WebView fx:id="webview3" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
+                  <WebView fx:id="webview4" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                  <WebView fx:id="webview5" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <WebView fx:id="webview6" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <WebView fx:id="webview7" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
+                  <WebView fx:id="webview8" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <WebView fx:id="webview9" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <WebView fx:id="webview10" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
+                  <WebView fx:id="webview11" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <WebView fx:id="webview12" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+         </content>
+      </Tab>
+      <Tab text="Desporto">
+         <content>
+            <GridPane fx:id="root1" gridLinesVisible="true">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <WebView fx:id="webview13" prefHeight="200.0" prefWidth="200.0" />
+                  <WebView fx:id="webview14" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                  <WebView fx:id="webview15" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
+                  <WebView fx:id="webview16" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                  <WebView fx:id="webview17" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <WebView fx:id="webview18" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <WebView fx:id="webview19" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
+                  <WebView fx:id="webview20" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <WebView fx:id="webview21" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <WebView fx:id="webview22" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
+                  <WebView fx:id="webview23" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <WebView fx:id="webview24" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+         </content>
+      </Tab>
+      <Tab text="Economia">
+         <content>
+            <GridPane fx:id="root2" gridLinesVisible="true">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <WebView fx:id="webview25" prefHeight="200.0" prefWidth="200.0" />
+                  <WebView fx:id="webview26" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                  <WebView fx:id="webview27" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
+                  <WebView fx:id="webview28" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                  <WebView fx:id="webview29" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <WebView fx:id="webview30" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <WebView fx:id="webview31" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
+                  <WebView fx:id="webview32" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <WebView fx:id="webview33" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <WebView fx:id="webview34" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
+                  <WebView fx:id="webview35" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <WebView fx:id="webview36" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>
