@@ -12,23 +12,38 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.web.WebView;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
 import org.jsoup.select.Elements;
+import javafx.event.EventHandler;
 
 /**
  * FXML Controller class
  *
  * @author lucas
  */
-public class FXMLhomepageController implements Initializable {
+public class FXMLhomepageController implements Initializable, EventHandler<KeyEvent>{
 
     HashSet<String> lexicoRelevante;
 
+    @FXML
+    private TabPane tab_pane;
     @FXML
     private WebView webview1;
     @FXML
@@ -101,15 +116,40 @@ public class FXMLhomepageController implements Initializable {
     private WebView webview35;
     @FXML
     private WebView webview36;
+    @FXML
+    private WebView webview37;
+    @FXML
+    private WebView webview38;
+    @FXML
+    private WebView webview39;
+    @FXML
+    private WebView webview40;
+    @FXML
+    private WebView webview41;
+    @FXML
+    private WebView webview42;
+    @FXML
+    private WebView webview43;
+    @FXML
+    private WebView webview44;
+    @FXML
+    private WebView webview45;
+    @FXML
+    private WebView webview46;
+    @FXML
+    private WebView webview47;
+    @FXML
+    private WebView webview48;
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadLexicos();
         String bgcolor = "#ffffff";
 
-        WebView[] webviewActualidade = {webview1, webview2, webview3, webview4, webview5, webview6, webview7, webview8, webview9, webview10, webview11, webview12};
-        WebView[] webviewDesporto = {webview13, webview14, webview15, webview16, webview17, webview18, webview19, webview20, webview21, webview22, webview23, webview24};
-        WebView[] webviewEco = {webview25, webview26, webview27, webview28, webview29, webview30, webview31, webview32, webview33, webview34, webview35, webview36};
+        WebView[] webviewActualidade = {webview1, webview2, webview3, webview4, webview5, webview6, webview7, webview8, webview9, webview10, webview11, webview12, webview37, webview38, webview39, webview40};
+        WebView[] webviewDesporto = {webview13, webview14, webview15, webview16, webview17, webview18, webview19, webview20, webview21, webview22, webview23, webview24, webview41, webview42, webview43, webview44};
+        WebView[] webviewEco = {webview25, webview26, webview27, webview28, webview29, webview30, webview31, webview32, webview33, webview34, webview35, webview36, webview45, webview46, webview47, webview48};
 
         //Array de strings com links para as noticias
         ArrayList<String> titulosAtualidade = titles("Actualidade");
@@ -141,9 +181,9 @@ public class FXMLhomepageController implements Initializable {
         for (i = 0; i < webviewActualidade.length; i++) {
             if (destakNew(paragrafosActualidade.get(i))) {
                 bgcolor = "#a1ffb4";
+            } else {
+                bgcolor = "#FFFFFF";
             }
-            else
-                bgcolor= "#FFFFFF";
 
             String img_align = "\"left\"";
             //builds the HTML containing the title and the first paragraph
@@ -231,7 +271,7 @@ public class FXMLhomepageController implements Initializable {
         }
 
     }
-
+    
     private ArrayList<String> get_image(String url, String categoria) {
         ArrayList<String> img_links = new ArrayList<>();
         if (categoria.equals("Actualidade")) {
@@ -363,39 +403,20 @@ public class FXMLhomepageController implements Initializable {
 
         }
         System.out.println("hash.texto" + hset.toString());
-        
-        
-        int lexSize= lexicoRelevante.size();
+
+        int lexSize = lexicoRelevante.size();
         hset.retainAll(lexicoRelevante);
-        System.out.println("|lexSize|: "+ lexSize);
-        System.out.println("|retainAllSize|: "+ hset.size());
+        System.out.println("|lexSize|: " + lexSize);
+        System.out.println("|retainAllSize|: " + hset.size());
 
-        double conjuction =(double) hset.size()/lexSize;
+        double conjuction = (double) hset.size() / lexSize;
         System.out.println("|Intersection %| " + conjuction);
-        if(conjuction>0.75)
+        if (conjuction > 0.75) {
             return true;
-        else
+        } else {
             return false;
-        
-        /*
-        String[] parts1 = content.trim().split(" ");
-        for (String string : parts1) {
-            hset1.add(string);
         }
-        System.out.println("hset ficeheiro" + hset1.toString());
-        int fichTam = hset.size();
-        int textTam = hset.size();
-        double disj = ((double) fichTam) / ((double) textTam);
-        System.out.println("disj == " + disj + " fichTam " + fichTam + "textTAM " + textTam);
-        hset1.retainAll(hset);
 
-        System.out.println("REATAIN ALL =====" + hset);
-        if (disj > 0.5) {
-            return true;
-        }
-*/
-
-        
     }
 
     private void loadLexicos() {
@@ -412,6 +433,11 @@ public class FXMLhomepageController implements Initializable {
             e.printStackTrace();
 
         }
+    }
+
+    @Override
+    public void handle(KeyEvent event) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
