@@ -32,13 +32,14 @@ import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
 import org.jsoup.select.Elements;
 import javafx.event.EventHandler;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author lucas
  */
-public class FXMLhomepageController implements Initializable, EventHandler<KeyEvent>{
+public class FXMLhomepageController implements Initializable{
 
     HashSet<String> lexicoRelevante;
 
@@ -269,8 +270,18 @@ public class FXMLhomepageController implements Initializable, EventHandler<KeyEv
             //loads the html to the webview
             webviewEco[k].getEngine().loadContent(html);
         }
-
+ 
     }
+    
+    @FXML
+    public void reload(KeyEvent e) throws Exception {
+       // Stage stage = (Stage) tab_pane.getScene().getWindow();
+        Scene scene = tab_pane.getScene();
+        if(e.getCode().equals(KeyCode.R))
+            scene.setRoot(FXMLLoader.load(getClass().getResource("FXMLhomepage.fxml")));
+            
+    }
+    
     
     private ArrayList<String> get_image(String url, String categoria) {
         ArrayList<String> img_links = new ArrayList<>();
@@ -435,9 +446,5 @@ public class FXMLhomepageController implements Initializable, EventHandler<KeyEv
         }
     }
 
-    @Override
-    public void handle(KeyEvent event) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }
