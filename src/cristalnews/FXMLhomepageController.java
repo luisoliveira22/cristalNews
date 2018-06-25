@@ -5,6 +5,7 @@
  */
 package cristalnews;
 
+import java.util.Timer;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -12,8 +13,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -42,7 +45,8 @@ import javafx.stage.Stage;
 public class FXMLhomepageController implements Initializable{
 
     HashSet<String> lexicoRelevante;
-
+    Timer timer= new Timer();
+    
     @FXML
     private TabPane tab_pane;
     @FXML
@@ -147,7 +151,7 @@ public class FXMLhomepageController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         loadLexicos();
         String bgcolor = "#ffffff";
-
+       
         WebView[] webviewActualidade = {webview1, webview2, webview3, webview4, webview5, webview6, webview7, webview8, webview9, webview10, webview11, webview12, webview37, webview38, webview39, webview40};
         WebView[] webviewDesporto = {webview13, webview14, webview15, webview16, webview17, webview18, webview19, webview20, webview21, webview22, webview23, webview24, webview41, webview42, webview43, webview44};
         WebView[] webviewEco = {webview25, webview26, webview27, webview28, webview29, webview30, webview31, webview32, webview33, webview34, webview35, webview36, webview45, webview46, webview47, webview48};
@@ -271,6 +275,21 @@ public class FXMLhomepageController implements Initializable{
             webviewEco[k].getEngine().loadContent(html);
         }
  
+        timer.schedule(new TimerTask() {
+            public void run() {
+                Platform.runLater(new Runnable() {
+                    public void run() {
+                        
+                        try {
+                            refresh();
+                        } catch (Exception ex) {
+                            Logger.getLogger(FXMLhomepageController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                });
+            }
+        }, 1800000);
+        
     }
     
     @FXML
@@ -282,6 +301,11 @@ public class FXMLhomepageController implements Initializable{
             
     }
     
+    @FXML
+    public void refresh() throws Exception {
+        Scene scene = tab_pane.getScene();
+        scene.setRoot(FXMLLoader.load(getClass().getResource("FXMLhomepage.fxml")));
+    }
     
     private ArrayList<String> get_image(String url, String categoria) {
         ArrayList<String> img_links = new ArrayList<>();
